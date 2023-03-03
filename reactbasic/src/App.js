@@ -13,8 +13,13 @@ function App() {
     "DW아카데미 501호",
     "DW아카데미 203호",
   ]);
+  let [bgColor, setBgc] = useState("");
+  let changeBg = () => {
+    let newBg = bgColor == "white" ? "red" : "white";
+    setBgc(newBg);
+  };
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundColor: bgColor }}>
       <h1>Hello, {user} !</h1>
       <p>This is a React App</p>
 
@@ -97,6 +102,14 @@ function App() {
         }}
       >
         제목정렬버튼
+      </button>
+      <button
+        onClick={() => {
+          // setBgc(bgColor == "red" ? "white" : "red");
+          changeBg();
+        }}
+      >
+        배경색 변경
       </button>
     </div>
   );
