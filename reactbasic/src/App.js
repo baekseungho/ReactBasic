@@ -89,9 +89,6 @@ function App() {
           </div>
         );
       })}
-      {["yejin", "lee", "lala"].map((e) => {
-        return e.toUpperCase();
-      })}
 
       {/* <div className="list">
         <h4>{title[1]}</h4>
@@ -173,13 +170,12 @@ function App() {
         onClick={() => {
           const copy2 = [...name2];
           copy2.map((e, index) => {
-            const change = copy2[index].toUpperCase();
-            copy2[index] = change;
+            copy2[index] = copy2[index].toUpperCase();
             setName2(copy2);
           });
         }}
       >
-        변경
+        대문자로 변경
       </button>
       {name2}
     </div>
