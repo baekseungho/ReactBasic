@@ -25,22 +25,20 @@ function CommentList() {
     const copy = [...comments];
     copy.splice(index, 1);
     setComments(copy);
-    console.log(index);
   }
 
   return (
     <div>
       {comments.map((text, index) => {
         return (
-          <div key={index}>
-            <Comment
-              name={text.name}
-              text={text.text}
-              button={text.button}
-              index={index}
-              onClick={removeThis}
-            />
-          </div>
+          <Comment
+            key={index}
+            name={text.name}
+            text={text.text}
+            button={text.button}
+            index={index}
+            onClick={removeThis}
+          />
         );
       })}
     </div>

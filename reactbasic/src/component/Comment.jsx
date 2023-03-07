@@ -1,7 +1,6 @@
 import React from "react";
 // import "./Comment.css";
 import logo from "./images/user.png";
-import { useState } from "react";
 
 const styles = {
   wrapper: {
@@ -13,11 +12,19 @@ const styles = {
     alignItems: "center",
     margin: "15px",
     fontSize: "24px",
+    position: "relative",
   },
   user: {
     width: "100px",
     height: "100px",
     margin: "20px",
+  },
+  button: {
+    width: "50px",
+    height: "50px",
+    position: "absolute",
+    right: "25px",
+    cursor: "pointer",
   },
 };
 
@@ -32,10 +39,10 @@ const Comment = (props) => {
         <p>{props.text}</p>
       </div>
       <button
-        onClick={(e) => {
+        onClick={() => {
           props.onClick(props.index);
         }}
-        style={{ width: "50px", height: "50px" }}
+        style={styles.button}
       >
         {props.button}
       </button>
