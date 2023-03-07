@@ -4,6 +4,8 @@ import "./App.css";
 import { useState } from "react";
 import State from "./component/State";
 import Box from "./component/Box";
+import Comment from "./component/Comment";
+import CommentList from "./component/CommentList";
 
 function App() {
   // State라는거에 반응하기 때문에 react
@@ -25,7 +27,7 @@ function App() {
   const [count, setCount] = useState(0);
   let increase = () => {
     num = num + 1;
-    setCount(count + 1);
+    setCount((current) => current + 1);
     // state값이 업데이트 될 때 마다 function App을 다시 실행 시키면서 변겨오딘 UI를 업데이트
     // 변수는 값을 저장하지 않고 함수가 호출 될 때 마다 초기화 된다.
     console.log("num : " + num, "State : " + count);
@@ -53,6 +55,12 @@ function App() {
     "白承昊",
     "캡틴백",
   ]);
+  let [username, setUsername] = useState(["라라라", "리리리", "로로로"]);
+  let [usertext, setUsertext] = useState([
+    "안녕하세요, 집에 가고싶다.",
+    "리액트 재밌다!",
+    "리액트 리액트 리액트",
+  ]);
   return (
     <div className="App">
       {/* <h1>{count}</h1>
@@ -63,13 +71,25 @@ function App() {
       <Box num="3" name="BaiCheungHao" />
       <Box num="4" name="白承昊" />
       <Box num="5" name="캡틴백" /> */}
-      {title.map((list, index) => {
+
+      {/* {title.map((list, index) => {
         return (
           <div key={index}>
             <Box num={title[index]} name={name[index]} />
           </div>
         );
-      })}
+      })} */}
+
+      {/* {username.map((list, index) => {
+        return (
+          <div key={index}>
+            <Comment name={username[index]} text={usertext[index]} />
+          </div>
+        );
+      })} */}
+      <div>
+        <CommentList />
+      </div>
     </div>
   );
 }
