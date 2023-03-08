@@ -42,7 +42,6 @@ const Comment = (props) => {
       <button
         onClick={() => {
           props.onClick(props.index);
-          console.log(props.index);
         }}
         style={styles.button}
       >
