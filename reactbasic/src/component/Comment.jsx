@@ -25,6 +25,7 @@ const styles = {
     position: "absolute",
     right: "25px",
     cursor: "pointer",
+    fontSize: "20px",
   },
 };
 
@@ -41,10 +42,11 @@ const Comment = (props) => {
       <button
         onClick={() => {
           props.onClick(props.index);
+          console.log(props.index);
         }}
         style={styles.button}
       >
-        {props.button}
+        X
       </button>
     </div>
   );
