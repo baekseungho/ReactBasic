@@ -1,32 +1,32 @@
 import React from "react";
 import Comment from "./Comment";
 import { useState } from "react";
-
+const save = [
+  {
+    name: "백승호1",
+    text: "안녕하세요. 백승호 입니다.",
+  },
+  {
+    name: "백승호2",
+    text: "こんにちは、白承昊です",
+  },
+  {
+    name: "백승호3",
+    text: "你好，我是 白承昊",
+  },
+  {
+    name: "백승호4",
+    text: "Hello My name is Beak SeungHo",
+  },
+];
 function CommentList() {
-  const save = [
-    {
-      name: "백승호1",
-      text: "안녕하세요. 백승호 입니다.",
-    },
-    {
-      name: "백승호2",
-      text: "こんにちは、白承昊です",
-    },
-    {
-      name: "백승호3",
-      text: "你好，我是 白承昊",
-    },
-    {
-      name: "백승호4",
-      text: "Hello My name is Beak SeungHo",
-    },
-  ];
   const [comments, setComments] = useState(save);
   const styles = {
     button: {
       width: "150px",
       height: "40px",
       marginLeft: "15px",
+      marginBottom: "5px",
       fontSize: "20px",
     },
     input: {
@@ -45,7 +45,7 @@ function CommentList() {
       name,
       text,
     };
-    setComments([...comments, user]);
+    setComments([user, ...comments]);
     setInputs({
       name: "",
       text: "",
@@ -66,7 +66,7 @@ function CommentList() {
 
   const addComment = () => {
     const add = { name: name1, text: content1 };
-    setComments([add, ...comments]);
+    setComments([...comments, add]);
     setName("");
     setContent("");
   };
@@ -80,9 +80,9 @@ function CommentList() {
   //객체 remove
   function removeThis(index) {
     const copy = [...comments];
-    // copy.splice(index, 1);
+    copy.splice(index, 1);
     setComments(copy);
-    copy.length === 1 ? reset() : copy.splice(index, 1);
+    // copy.length === 1 ? reset() : copy.splice(index, 1);
   }
 
   return (
@@ -99,30 +99,47 @@ function CommentList() {
           />
         );
       })}
-      <button style={styles.button} onClick={reset}>
-        Reset
-      </button>
-      <input
-        name="name"
-        placeholder="이름을 입력하세요"
-        onChange={onChange}
-        style={styles.input}
-      />
-      <input
-        name="text"
-        placeholder="문구를 입력하세요"
-        onChange={onChange}
-        style={styles.input}
-      />
-      <button style={styles.button} onClick={onCreate}>
-        Add
-      </button>
-      {/* onChange 이벤트는 input 요소에서 값이 변경될 때 발생
-          그 때 발생한 이벤트를 매개변수 e */}
-      이름 : <input value={name1} onChange={(e) => setName(e.target.value)} />
-      컨텐츠 :
-      <input vlaue={content1} onChange={(e) => setContent(e.target.value)} />
-      <button onClick={addComment}>ADD2</button>
+      <div style={{ position: "absolute", right: "130px", top: "30px" }}>
+        <button style={styles.button} onClick={reset}>
+          Reset
+        </button>
+        <br></br>
+        <input
+          value={name}
+          name="name"
+          placeholder="이름을 입력하세요"
+          onChange={onChange}
+          style={styles.input}
+        />
+        <input
+          value={text}
+          name="text"
+          placeholder="문구를 입력하세요"
+          onChange={onChange}
+          style={styles.input}
+        />
+        <button style={styles.button} onClick={onCreate}>
+          On Add
+        </button>
+        <br></br>
+        {/* onChange 이벤트는 input 요소에서 값이 변경될 때 발생
+            그 때 발생한 이벤트를 매개변수 e */}
+        <input
+          style={styles.input}
+          placeholder="이름을 입력하세요"
+          value={name1}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          style={styles.input}
+          placeholder="문구를 입력하세요"
+          value={content1}
+          onChange={(e) => setContent(e.target.value)}
+        />
+        <button style={styles.button} onClick={addComment}>
+          Under Add
+        </button>
+      </div>
     </div>
   );
 }
