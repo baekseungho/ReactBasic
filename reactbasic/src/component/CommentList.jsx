@@ -16,7 +16,7 @@ const save = [
   },
   {
     name: "백승호4",
-    text: "Hello My name is Beak SeungHo",
+    text: "Hello, My name is Beak SeungHo",
   },
 ];
 function CommentList() {
