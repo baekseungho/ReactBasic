@@ -34,6 +34,11 @@ function CommentList() {
       height: "30px",
       marginLeft: "15px",
     },
+    div: {
+      borderTop: "3px solid #aaa",
+      padding: "5px",
+      textAlign: "center",
+    },
   };
 
   //Input 입력받아서 Add
@@ -45,11 +50,20 @@ function CommentList() {
       name,
       text,
     };
-    setComments([user, ...comments]);
-    setInputs({
-      name: "",
-      text: "",
-    });
+    function pass() {
+      setComments([user, ...comments]);
+      setInputs({
+        name: "",
+        text: "",
+      });
+    }
+    name !== "" && text !== ""
+      ? pass()
+      : name !== ""
+      ? alert("문구를 입력하세요!")
+      : text !== ""
+      ? alert("이름을 입력하세요!")
+      : alert("이름과 문구를 입력하세요!");
   };
 
   const onChange = (e) => {
@@ -66,9 +80,17 @@ function CommentList() {
 
   const addComment = () => {
     const add = { name: name1, text: content1 };
-    setComments([...comments, add]);
-    setName("");
-    setContent("");
+    name1 !== "" && content1 !== ""
+      ? (() => {
+          setComments([...comments, add]);
+          setName("");
+          setContent("");
+        })()
+      : name1 !== ""
+      ? alert("문구를 입력하세요!")
+      : content1 !== ""
+      ? alert("이름을 입력하세요!")
+      : alert("이름과 문구를 입력하세요!");
   };
 
   //Reset
@@ -100,45 +122,52 @@ function CommentList() {
         );
       })}
       <div style={{ position: "absolute", right: "130px", top: "30px" }}>
-        <button style={styles.button} onClick={reset}>
-          Reset
-        </button>
-        <br></br>
-        <input
-          value={name}
-          name="name"
-          placeholder="이름을 입력하세요"
-          onChange={onChange}
-          style={styles.input}
-        />
-        <input
-          value={text}
-          name="text"
-          placeholder="문구를 입력하세요"
-          onChange={onChange}
-          style={styles.input}
-        />
-        <button style={styles.button} onClick={onCreate}>
-          On Add
-        </button>
-        <br></br>
+        <div>
+          <button style={styles.button} onClick={reset}>
+            Reset
+          </button>
+        </div>
+
+        <div style={styles.div}>
+          <input
+            value={name}
+            name="name"
+            placeholder="이름을 입력하세요"
+            onChange={onChange}
+            style={styles.input}
+          />
+          <input
+            value={text}
+            name="text"
+            placeholder="문구를 입력하세요"
+            onChange={onChange}
+            style={styles.input}
+          />
+          <button style={styles.button} onClick={onCreate}>
+            On Add
+          </button>
+        </div>
+
         {/* onChange 이벤트는 input 요소에서 값이 변경될 때 발생
             그 때 발생한 이벤트를 매개변수 e */}
-        <input
-          style={styles.input}
-          placeholder="이름을 입력하세요"
-          value={name1}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          style={styles.input}
-          placeholder="문구를 입력하세요"
-          value={content1}
-          onChange={(e) => setContent(e.target.value)}
-        />
-        <button style={styles.button} onClick={addComment}>
-          Under Add
-        </button>
+        <div style={styles.div}>
+          <input
+            style={styles.input}
+            placeholder="이름을 입력하세요"
+            value={name1}
+            onChange={(e) => setName(e.target.value)}
+          />
+
+          <input
+            style={styles.input}
+            placeholder="문구를 입력하세요"
+            value={content1}
+            onChange={(e) => setContent(e.target.value)}
+          />
+          <button style={styles.button} onClick={addComment}>
+            Under Add
+          </button>
+        </div>
       </div>
     </div>
   );
