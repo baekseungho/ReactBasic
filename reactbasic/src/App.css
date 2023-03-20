@@ -1,10 +1,59 @@
 * {
   margin: 0;
   padding: 0;
+  text-align: center;
   box-sizing: border-box;
+}
+
+.boxList {
+  display: flex;
+  justify-content: center;
 }
 
 .back {
   background-image: url(./1.jpg);
   height: 500px;
+}
+
+.box img {
+  width: 350px;
+  height: 400px;
+  object-fit: cover;
+}
+
+.box {
+  width: 420px;
+  padding: 30px;
+  margin: 0 15px;
+  border: 5px solid #ccc;
+}
+
+.btnList {
+  margin-top: 20px;
+}
+
+.btnList button {
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  background-color: #000;
+  color: #fff;
+  margin-right: 5px;
+}
+
+.btnList button :last-child {
+  margin-right: 0;
+}
+
+.win {
+  border: 5px solid greenyellow;
+}
+
+.lose {
+  border: 5px solid red;
+}
+
+.tie {
+  border: 5px solid #000;
 }
